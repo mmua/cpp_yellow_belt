@@ -1,3 +1,12 @@
+#include <iostream>
+#include <sstream>
+#include <set>
+#include <map>
+#include <vector>
+#include <string>
+
+using namespace std;
+
 template <class T>
 ostream& operator << (ostream& os, const vector<T>& s) {
     os << "{";
