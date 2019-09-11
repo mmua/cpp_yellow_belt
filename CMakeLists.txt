@@ -3,5 +3,4 @@ project(cpp_yellow_belt)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(cpp_yellow_belt main.cpp)
-add_executable(starter starter.cpp)
+add_executable(cpp_yellow_belt main.cpp query.h query.cpp responses.h responses.cpp bus_manager.h bus_manager.cpp)
