@@ -7,9 +7,13 @@ using namespace std;
 class Person {
 public:
     Person(const string& name, const string& occupation): Name(name), Occupation(occupation) {};
-    virtual void Walk(string destination) {
-        cout << Occupation << ": " << Name << " walks to: " << destination << endl;
+    string Identity() const {
+        return Occupation + ": " + Name;
+    }
+    virtual void Walk(const string& destination) {
+        cout << Identity() << " walks to: " << destination << endl;
     };
+
     const string Name;
     const string Occupation;
 };
@@ -21,16 +25,16 @@ public:
     }
 
     void Learn() {
-        cout << Occupation << ": " << Name << " learns" << endl;
+        cout << Identity() << " learns" << endl;
     }
 
-    void Walk(string destination) override {
+    void Walk(const string& destination) override {
         Person::Walk(destination);
-        cout << Occupation << ": " << Name << " sings a song: " << FavouriteSong << endl;
+        SingSong();
     }
 
     void SingSong() {
-        cout << Occupation << ": " << Name << " sings a song: " << FavouriteSong << endl;
+        cout << Identity() << " sings a song: " << FavouriteSong << endl;
     }
 
 public:
@@ -45,7 +49,7 @@ public:
     }
 
     void Teach() {
-        cout << Occupation << ": " << Name << " teaches: " << Subject << endl;
+        cout << Identity() << " teaches: " << Subject << endl;
     }
 
 public:
@@ -59,13 +63,13 @@ public:
     }
 
     void Check(Person& p) {
-        cout << Occupation << ": " << Name << " checks " << p.Occupation << ". " << p.Occupation << "'s name is: " << p.Name << endl;
+        cout << Identity() << " checks " << p.Occupation << ". " << p.Occupation << "'s name is: " << p.Name << endl;
     }
 };
 
 
 void VisitPlaces(Person& person, const vector<string>& places) {
-    for (auto p : places) {
+    for (const auto& p : places) {
         person.Walk(p);
     }
 }
